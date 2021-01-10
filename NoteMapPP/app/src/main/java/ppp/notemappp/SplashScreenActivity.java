@@ -16,7 +16,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         this.findViewById(android.R.id.content).setBackgroundColor(R.color.green);
-
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
