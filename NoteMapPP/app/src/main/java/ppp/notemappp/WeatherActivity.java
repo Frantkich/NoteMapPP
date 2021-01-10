@@ -26,8 +26,12 @@ public class WeatherActivity extends AppCompatActivity {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        String lat = "48.8566";
-        String lon = "2.3522";
+        String lat = getIntent().getExtras().getString("lat");
+        String lon = getIntent().getExtras().getString("long");
+        if (lat.length() > 6) {
+            lat = lat.substring(0 , 6);}
+        if (lon.length() > 6) {
+            lon = lon.substring(0 , 6);}
         String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=19272d3c444e0e204c5f2dfdfb13ccd2&units=metric&lang=fr";
 
         // Request a string response from the provided URL.

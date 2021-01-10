@@ -43,7 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        getActionBar().hide();
+
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -83,6 +83,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         "Lat : " + latLng.latitude + " , "
                                 + "Long : " + latLng.longitude,
                         Toast.LENGTH_LONG).show();
+                String lat = latLng.latitude + "";
+                String lon = latLng.longitude + "";
+                Intent intent = new Intent(MapsActivity.this, WeatherActivity.class);
+                intent.putExtra("lat", lat);
+                intent.putExtra("long", lon);
+                startActivity(intent);
 
             }
         });
