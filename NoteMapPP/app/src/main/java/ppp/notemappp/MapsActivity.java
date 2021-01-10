@@ -74,7 +74,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } else {
             checkLocationPermission();
         }
-        
+        mGoogleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+
+                Toast.makeText(
+                        MapsActivity.this,
+                        "Lat : " + latLng.latitude + " , "
+                                + "Long : " + latLng.longitude,
+                        Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 
     LocationCallback mLocationCallback = new LocationCallback() {
