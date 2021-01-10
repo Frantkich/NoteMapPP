@@ -23,7 +23,6 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        final TextView textView = (TextView) findViewById(R.id.testAPI);
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -38,8 +37,17 @@ public class WeatherActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         //Log.e("volley", response.toString());
 
+                        // Storing values from JSON into a Java object to send them to view
                         Main main = new Gson().fromJson(response, Main.class);
                         //System.out.println(main.getMain().getTemp());
+                        TextView textView = (TextView) findViewById(R.id.realTemp);
+                        textView.setText("Temperature :" + main.getMain().getTemp());
+                        TextView textView2 = (TextView) findViewById(R.id.feelTemp);
+                        textView2.setText("Ressenti :" + main.getMain().getFeels_like());
+                        TextView textView3 = (TextView) findViewById(R.id.pressure);
+                        textView3.setText("Pression :" + main.getMain().getPressure());
+                        TextView textView4 = (TextView) findViewById(R.id.humidity);
+                        textView4.setText("Humidité :" + main.getMain().getHumidity());
 
                     }
                 }, new Response.ErrorListener() {
